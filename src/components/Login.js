@@ -47,7 +47,7 @@ function Login() {
         </div>
         <div>
           <label htmlFor="password">Password:</label>
-          <input type="tel" id="password" value={password} onChange={event => setPassword(event.target.value)} />
+          <input type="password" id="password" value={password} onChange={event => setPassword(event.target.value)} />
         </div>
         {error && <p>{error}</p>}
         <button type="submit">Log in</button>
