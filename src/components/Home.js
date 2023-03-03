@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchPosts } from '../features/posts/Posts';
 import Nav from './Nav'
 
+
+
 const Home = () => {
     const {status, data} = useSelector((state) => state.posts);
     const dispatch = useDispatch();
@@ -31,28 +33,30 @@ const Home = () => {
       };
 
       //comments
-      const handleAddComments = (event) => {
-        event.preventDefault();
+      const handleAddComments = () => {
+       
         setComments([{text:inputText, id: Math.random() *1000, ...comments}]);
         setInput('')
       };
 
   return (
-        <div className='bg-[#378f87]'>
+        <div className='w-[80%]'>
           <Nav />
             {data.map((post) => {
                 return(
-                    <div>
+                    <div className='card'>
                     <h1 key={post.id}>{post.title}</h1>
                     <p>{post.body}</p>
-                    <button onClick={() => handleLike(post.id)}>like</button>
+                    <button onClick={() => handleLike(post.id)} 
+                    variant="contained" className='bg-[#0c1c2c]'>like</button>
                         <span>{likes[post.id] || 0}</span>
-<h3>comments</h3>
+                        <h6>comments</h6>
                         {/* comments section */}
                         
                       <div className='comments'>
                         <input value={inputText} onChange={event =>{setInput(event.target.value)}} type='text' />
-                        <button onClick={handleAddComments}>comment</button>
+                        <button onClick={handleAddComments}
+                         variant="contained" className='bg-[#0c1c2c]'>comment</button>
                         {comments.map((comment) => (
                           <div>
                             <p key={comment.id}>{comment.text}</p>
@@ -61,7 +65,7 @@ const Home = () => {
                         }
                           
                     </div>
-                    
+                    <br/>
                     </div>
   )
 }

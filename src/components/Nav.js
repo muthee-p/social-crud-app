@@ -12,7 +12,7 @@ const history = useNavigate();
   };
 
   return (
-    <nav>
+    <nav className='bt-2'>
       <ul>
         <li><a href="/home">Home</a></li>
         <li><a href="/profile">Profile</a></li>

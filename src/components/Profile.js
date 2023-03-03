@@ -2,6 +2,7 @@
 import React, {useEffect, useState} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchPosts, addPost, deletePost , updatePost } from '../features/posts/Posts';
+import Button from '@mui/material/Button';
 
 
 const Profile = () => {
@@ -50,7 +51,7 @@ const Profile = () => {
         <div className='addpost'>
            <input onChange={(event) => {setTitle(event.target.value)}} type='text' placeholder='Post Title' /> 
             <textarea onChange={(event) => {setPostBody(event.target.value)}} type='text' placeholder='write Post' />
-           <button onClick={handleAddPost}>post</button>
+           <Button onClick={handleAddPost}>post</Button>
         </div>
         <div className='posts'>
             {data.map((post) => {
@@ -63,16 +64,16 @@ const Profile = () => {
                             setNewBody(event.target.value);
                         }}/>
 
-                    <button onClick={() => {
+                    <Button onClick={() => {
                         dispatch(updatePost({id: post.id, body: newBody}))
-                    }}>submit</button>
+                    }}>submit</Button>
                     <button onClick={() => handleDeletePost(post.id)}>Delete</button>
                     {showModal && (
         <div className="modal">
           <div className="modal-content">
             <h2>Are you sure you want to delete this post?</h2>
-            <button onClick={handleConfirmDelete}>Yes</button>
-            <button onClick={handleCancelDelete}>No</button>
+            <Button onClick={handleConfirmDelete}>Yes</Button>
+            <Button onClick={handleCancelDelete}>No</Button>
           </div>
         </div>
       )}

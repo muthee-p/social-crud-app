@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom'
 
 const Public = () => {
   return (
-    <div>
-      <h2>WELCOME TO SOCIAL APP</h2>
+    <div className='w-[25vw] text-gray'>
+      <h2 className='mb-[2rem]'>WELCOME TO SOCIAL APP</h2>
       <p>Lorem ipsum dolor sit amet. Et odit voluptate in magni molestiae et consequatur galisum et unde eius ut placeat possimus est quae natus! 
         Ea nobis ducimus et galisum excepturi sit quas architecto. 
         Eum libero repellendus id maiores laudantium aut culpa voluptatem in perferendis quis sed consectetur officiis. 
