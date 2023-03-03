@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Navigate } from 'react-router-dom';
 import { logIn } from '../features/auth/authSlice';
+import { Link } from 'react-router-dom'
 
 function Login() {
   const dispatch = useDispatch();
@@ -24,7 +25,7 @@ function Login() {
     dispatch(logIn({ username, password }));
   };
   return (
-    <div>
+    <div className='card'>
       <h1>Login</h1>
       <form onSubmit={handleSubmit}>
         <div>
@@ -36,7 +37,8 @@ function Login() {
           <input type="password" id="password" value={password} onChange={event => setPassword(event.target.value)} />
         </div>
         {error && <p>{error}</p>}
-        <button type="submit">Log in</button>
+        <button type="submit" variant="outlined">Log in</button>
+        <Link to='/'>Back </Link>
       </form>
     </div>
   );

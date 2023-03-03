@@ -4,13 +4,14 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchPosts, addPost, deletePost , updatePost } from '../features/posts/Posts';
 
 
-const CreatePosts = () => {
+const Profile = () => {
     const {status, data} = useSelector((state) => state.posts);
     const dispatch = useDispatch();
     const [ title, setTitle ] = useState("");
     const [ body, setPostBody ] = useState("");
     const [ newBody, setNewBody ] = useState("");
-    // const [ newTitle, setNewTitle ] = useState("");
+    const [showModal, setShowModal] = useState(false);
+  const [postIdToDelete, setPostIdToDelete] = useState(null);
 
     useEffect(() => {
         if (status === 'idle') {
@@ -30,7 +31,19 @@ const CreatePosts = () => {
         }));
         setTitle(''); setPostBody('');
       };
-
+      const handleDeletePost = (id) => {
+        setPostIdToDelete(id);
+        setShowModal(true);
+      };
+    
+      const handleConfirmDelete = () => {
+        dispatch(deletePost({ id: postIdToDelete }));
+        setShowModal(false);
+      };
+    
+      const handleCancelDelete = () => {
+        setShowModal(false);
+      };
   return (
     <div>
         {" "}
@@ -53,8 +66,16 @@ const CreatePosts = () => {
                     <button onClick={() => {
                         dispatch(updatePost({id: post.id, body: newBody}))
                     }}>submit</button>
-                    <button
-                    onClick={() => dispatch(deletePost({id:post.id }))}>Delete post</button>
+                    <button onClick={() => handleDeletePost(post.id)}>Delete</button>
+                    {showModal && (
+        <div className="modal">
+          <div className="modal-content">
+            <h2>Are you sure you want to delete this post?</h2>
+            <button onClick={handleConfirmDelete}>Yes</button>
+            <button onClick={handleCancelDelete}>No</button>
+          </div>
+        </div>
+      )}
                     </div>
                 )
             })}
@@ -63,4 +84,4 @@ const CreatePosts = () => {
   )
 }
 
-export default CreatePosts
+export default Profile;

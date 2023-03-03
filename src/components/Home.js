@@ -3,20 +3,20 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchPosts } from '../features/posts/Posts';
 import Nav from './Nav'
 
-
-
 const Home = () => {
     const {status, data} = useSelector((state) => state.posts);
     const dispatch = useDispatch();
     const [likes, setLikes] = useState({});
     const [comments, setComments] = useState ([]);
     const [ inputText, setInput] = useState("")
+    
    //posts
     useEffect(() => {
         if (status === 'idle') {
           dispatch(fetchPosts());
         }
       }, [status, dispatch]);
+
       if (status === 'loading') {
         return <div>Loading...</div>;
       } else if (status === 'failed') {
@@ -38,7 +38,7 @@ const Home = () => {
       };
 
   return (
-        <div className='posts'>
+        <div className='bg-[#378f87]'>
           <Nav />
             {data.map((post) => {
                 return(
