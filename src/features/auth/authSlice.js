@@ -22,6 +22,7 @@ const authSlice = createSlice({
       state.error = action.payload;
     },
     logOut: state => {
+      console.log('Logging out...');
       state.user = null;
       state.isLoading = false;
       state.error = null;

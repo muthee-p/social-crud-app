@@ -17,21 +17,7 @@ function Login() {
   if (user) {
     return <Navigate to="/home" />;
   }
-
-  // useEffect(() => {
-  //   if (user) {
-  //     history.push('/home');
-  //   }
-  // }, [user, history]);
-
   
-  // const handleUsernameChange = event => {
-  //   setUsername(event.target.value);
-  // };
-
-  // const handlePasswordChange = event => {
-  //   setPassword(event.target.value);
-  // };
 
   const handleSubmit = event => {
     event.preventDefault();

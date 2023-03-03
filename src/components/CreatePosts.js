@@ -10,7 +10,7 @@ const CreatePosts = () => {
     const [ title, setTitle ] = useState("");
     const [ body, setPostBody ] = useState("");
     const [ newBody, setNewBody ] = useState("");
-    const [ newTitle, setNewTitle ] = useState("");
+    // const [ newTitle, setNewTitle ] = useState("");
 
     useEffect(() => {
         if (status === 'idle') {
